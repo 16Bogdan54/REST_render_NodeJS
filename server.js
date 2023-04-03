@@ -3,17 +3,18 @@ const http = require('http');
 const mongoose = require('mongoose');
 
 const config = require('config/config');
+const logger = require('logger/logger');
 
 const app = express();
 
 (async () => {
     try {
-        await mongoose.connect(config.mongo.url)
+        await mongoose.connect(config.mongo.url);
+        logger.info("connected to database");
         startServer();
-        console.log("connected to database")
     } catch(err) {
-        console.log(err)
+        logger.error(err)
     }
-})()
+})();
 
 const startServer = () => {}
