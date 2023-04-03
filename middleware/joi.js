@@ -1,8 +1,6 @@
 const joi = require('joi');
 const logger = require('../logger/logger');
 
-const UserModel = require('../models/userModel')
-
 const Validate = (schema) => {
     return async (req, res, next) => {
         try {
