@@ -11,7 +11,7 @@ const create = async (req, res) => {
     const user = new UserModel({
         _id: new mongoose.Types.ObjectId(),
         name,
-        hashedPassword,
+        password: hashedPassword,
         description
     });
 
