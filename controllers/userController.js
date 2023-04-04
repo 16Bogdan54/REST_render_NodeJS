@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const UserModel = require('../models/userModel');
 
 const create = async (req, res) => {
     const { name, password, description } = req.body;
 
+    const hashedPassword = await bcrypt.hash(password, 10)
+
     const user = new UserModel({
         _id: new mongoose.Types.ObjectId(),
         name,
-        password,
+        hashedPassword,
         description
     });
 

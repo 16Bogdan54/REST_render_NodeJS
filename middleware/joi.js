@@ -1,4 +1,5 @@
 const joi = require('joi');
+
 const logger = require('../logger/logger');
 
 const Validate = (schema) => {
