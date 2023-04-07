@@ -28,6 +28,18 @@ const Schemas = {
             password: joi.string(),
             description: joi.string()
         })
+    },
+    article: {
+        create: joi.object({
+            title: joi.string().required(),
+            paragraph: joi.string().required(),
+            author: joi.object().required()
+        }),
+        update: joi.object({
+            title: joi.string(),
+            paragraph: joi.string(),
+            author: joi.object()
+        })
     }
 }
 module.exports = {
