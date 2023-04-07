@@ -6,6 +6,7 @@ const config = require('./config/config');
 const logger = require('./logger/logger');
 
 const userRoutes = require('./routes/user')
+const articleRoutes = require('./routes/article')
 
 const app = express();
 
@@ -47,6 +48,7 @@ const startServer = () => {
     })
 
     app.use('/users', userRoutes)
+    app.use('/articles', articleRoutes)
 
     app.use((req, res) => {
         const err = new Error('not found')
