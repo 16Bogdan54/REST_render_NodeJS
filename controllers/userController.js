@@ -3,26 +3,6 @@ const bcrypt = require('bcrypt');
 
 const UserModel = require('../models/userModel');
 
-const create = async (req, res) => {
-    const { name, password, description } = req.body;
-
-    const hashedPassword = await bcrypt.hash(password, 10)
-
-    const user = new UserModel({
-        _id: new mongoose.Types.ObjectId(),
-        name,
-        password: hashedPassword,
-        description
-    });
-
-    try {
-        const savedUser = await user.save();
-        return res.status(201).json({ author: savedUser });
-    } catch (error) {
-        return res.status(500).json({ error });
-    }
-};
-
 const readById = async (req, res) => {
     const id = req.params.userId;
 

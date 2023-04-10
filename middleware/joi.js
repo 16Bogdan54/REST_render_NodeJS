@@ -18,13 +18,9 @@ const Validate = (schema) => {
 
 const Schemas = {
     user: {
-        create: joi.object({
-            name: joi.string().required(),
-            password: joi.string().required(),
-            description: joi.string()
-        }),
         update: joi.object({
             name: joi.string(),
+            email: joi.string(),
             password: joi.string(),
             description: joi.string()
         })
@@ -40,7 +36,18 @@ const Schemas = {
             paragraph: joi.string(),
             author: joi.object()
         })
-    }
+    },
+    login: joi.object({
+        name: joi.string().required(),
+        email: joi.string().required(),
+        password: joi.string().required()
+    }),
+    register: joi.object({
+        name: joi.string().required(),
+        email: joi.string().required(),
+        password: joi.string().required(),
+        description: joi.string()
+    })
 }
 module.exports = {
     Validate,
