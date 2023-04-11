@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const config = require('./config/config');
 const logger = require('./logger/logger');
 
-const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const articleRoutes = require('./routes/article')
+const authRoutes = require('./routes/auth')
 
 const app = express();
 
@@ -48,9 +48,10 @@ const startServer = () => {
         next()
     })
 
-    app.use('/api/auth', authRoutes);
+
     app.use('/users', userRoutes)
     app.use('/articles', articleRoutes)
+    app.use('/api/auth', authRoutes);
 
     app.use((req, res) => {
         const err = new Error('not found')
