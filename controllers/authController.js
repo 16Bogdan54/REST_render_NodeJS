@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
 const UserModel = require('../models/userModel')
-const logger = require("logger/logger");
-const {verificationMessage, sendMail } = require("helpers/");
-const {generateAccessToken} = require("helpers/token");
+const logger = require("../logger/logger");
+const {verificationMessage, sendMail } = require("../helpers/");
+const {generateAccessToken} = require("../helpers/token");
 
 const {EXPIRES_IN} = process.env;
 

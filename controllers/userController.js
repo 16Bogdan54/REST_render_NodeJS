@@ -68,7 +68,6 @@ const deleteById = async (req, res) => {
 }
 
 module.exports = {
-    create,
     readById,
     readAll,
     update,

@@ -2,6 +2,11 @@ const joi = require('joi');
 
 const logger = require('../logger/logger');
 
+const user = joi.object({
+    name: joi.string(),
+    email: joi.string(),
+})
+
 const Validate = (schema) => {
     return async (req, res, next) => {
         try {
@@ -29,12 +34,12 @@ const Schemas = {
         create: joi.object({
             title: joi.string().required(),
             paragraph: joi.string().required(),
-            author: joi.object().required()
+            author: joi.object({user}).required()
         }),
         update: joi.object({
             title: joi.string(),
             paragraph: joi.string(),
-            author: joi.object()
+            author: joi.object({user})
         })
     },
     login: joi.object({

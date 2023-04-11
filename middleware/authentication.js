@@ -4,7 +4,7 @@ const UserModel = require('../models/userModel');
 
 const {ACCESS_SECRET_KEY} = process.env;
 
-const authentication = async (req, res, next) => {
+const authenticate = async (req, res, next) => {
 
     const {authorization = ""} = req.headers;
 
@@ -32,4 +32,4 @@ const authentication = async (req, res, next) => {
 
 }
 
-module.exports = authentication
+module.exports = authenticate
