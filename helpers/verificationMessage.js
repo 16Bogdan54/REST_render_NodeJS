@@ -10,7 +10,7 @@ const verificationMessage = (email) => {
         from: SENDER_EMAIL,
         subject: "Verification",
         text: "Verify your account by clicking the link bellow",
-        html: `<a href="${BASE_URL}/api/auth/verify/${verificationToken}" target="_blank">Verify</a>`
+        html: `<a href="${BASE_URL || 'http://localhost:3001'}/api/auth/verify/${verificationToken}" target="_blank">Verify</a>`
     }
 
     return {verifyMessage, verificationToken}

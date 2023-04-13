@@ -17,7 +17,7 @@ const create = async (req, res) => {
 };
 
 const readById = async (req, res) => {
-    const id = new mongoose.Types.ArticleId;
+    const id = new req.params.ArticleId;
 
     try {
         const article = await ArticleModel.findById(id);
