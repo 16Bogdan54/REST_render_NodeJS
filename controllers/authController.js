@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken')
 
 const UserModel = require('../models/userModel')
 const logger = require("../logger/logger");
-const {verificationMessage, sendMail } = require("../helpers/");
+const sendMail = require('../helpers/sendEmail')
+const verificationMessage = require("../helpers/verificationMessage");
 const {generateAccessToken} = require("../helpers/token");
 
 const {EXPIRES_IN} = process.env;
@@ -49,7 +50,9 @@ const login = async (req, res, next) => {
 const register = async (req, res, next) => {
     const { email, password } = req.body;
 
-    if(await UserModel.findOne({email})) {
+    const userCheck = await UserModel.findOne({email})
+
+    if(userCheck) {
         logger.info('Email already in use')
         next();
         return;
@@ -57,7 +60,7 @@ const register = async (req, res, next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const {verificationToken, verifyMessage} = verificationMessage()
+    const {verificationToken, verifyMessage} = verificationMessage(email)
     await sendMail.send(verifyMessage)
 
     const user = new UserModel({

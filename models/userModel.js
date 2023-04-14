@@ -10,14 +10,9 @@ const UserSchema = new mongoose.Schema(
         verificationToken: {type: String, default: null},
         verify: {type: Boolean, default: false}
     },
-    {
-        versionKey: false
-    }
+    {versionKey: false}
 )
 
 const UserModel = mongoose.model('User', UserSchema)
 
-module.exports = {
-    UserSchema,
-    UserModel
-}
+module.exports = UserModel

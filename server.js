@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const config = require('./config/config');
 const logger = require('./logger/logger');
 
-const userRoutes = require('./routes/user')
-const articleRoutes = require('./routes/article')
-const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/api/user')
+const articleRoutes = require('./routes/api/article')
+const authRoutes = require('./routes/api/auth')
 
 const app = express();
 
@@ -53,13 +53,13 @@ const startServer = () => {
     app.use('/articles', articleRoutes)
     app.use('/api/auth', authRoutes);
 
-    // app.use((req, res) => {
-    //     const err = new Error('not found')
-    //
-    //     logger.error(err)
-    //
-    //     return res.status(404).json({message: err.message})
-    // })
+    app.use((req, res) => {
+        const err = new Error('not found')
+
+        logger.error(err)
+
+        return res.status(404).json({message: err.message})
+    })
 
     http.createServer(app).listen(config.server.port, () => logger.info(`Server is running on port ${config.server.port}`))
 }

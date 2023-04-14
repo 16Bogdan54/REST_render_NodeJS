@@ -1,6 +1,6 @@
 const express = require('express');
-const ArticleController = require('../controllers/articleController');
-const {Schemas, Validate} = require('../middleware/joi');
+const ArticleController = require('../../controllers/articleController');
+const {Schemas, Validate} = require('../../middleware/joi');
 
 const articleRouter = express.Router();
 

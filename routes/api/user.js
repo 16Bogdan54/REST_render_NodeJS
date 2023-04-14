@@ -1,6 +1,6 @@
 const express = require('express');
-const UserController = require('../controllers/userController')
-const {Schemas, Validate} = require('../middleware/joi')
+const UserController = require('../../controllers/userController')
+const {Schemas, Validate} = require('../../middleware/joi')
 
 const userRouter = express.Router();
 
