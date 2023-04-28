@@ -7,7 +7,7 @@ const generateAccessToken = (user) => {
         id: user._id
     }
 
-    return jwt.sign(ACCESS_TOKEN_SECRET, payload, {
+    return jwt.sign(payload, ACCESS_TOKEN_SECRET, {
         expiresIn: EXPIRES_IN
     })
 }
